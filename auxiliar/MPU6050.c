@@ -93,6 +93,7 @@ void MPU6050_Read_Gyro(i2c_inst_t *i2c) {
     char buf[6];
     LCD_print("Giroscopio:", 1, 0);
 
+
     // Converter os valores brutos em graus por segundo
     sprintf(buf, "%.2f", Gyro_X_RAW / 131.0);
     LCD_print("Gx: ", 1, 1);
