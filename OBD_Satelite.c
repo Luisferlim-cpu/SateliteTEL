@@ -142,13 +142,20 @@ void setup() {
     gpio_pull_up(I2C_SDA);
     gpio_pull_up(I2C_SCL);
 
+    //configurandos os pinos do LCD
+    LCD_setRST (2) ;
+    LCD_setCE (3) ; 
+    LCD_setDC (6) ;
+    LCD_setDIN (7) ;
+    LCD_setCLK (8) ;
+    LCD_init();
+
     // Inicializa o ADC
     adc_init();
     adc_gpio_init(26); // Configuração do pino de leitura analógica
     adc_select_input(0); // Canal 0 do ADC
-
-    // Inicializa o LCD e sensores
-    LCD_init();
+    // Inicializa os e sensores
+    
     MPU6050_init(I2C_PORT);
     BMP180_Start(I2C_PORT);
 }
