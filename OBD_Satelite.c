@@ -20,39 +20,8 @@
 #define I2C_SCL 5
 #define ACS_CORRENTE 26
 
+//funcao de inicializacao
 void setup();
-
-// Função de inicializacao do DHT11
-// uint8_t DHT11_Start(uint8_t DHT11_PIN) {
-//     uint8_t resposta = 0;
-//     gpio_set_dir(DHT11_PIN, GPIO_OUT);  // DHT11 como saída
-//     gpio_put(DHT11_PIN, 0);  // Pulsa o pino para 0
-//     microDelay(20000);  // Espera por 20ms
-//     gpio_put(DHT11_PIN, 1);  // Seta o pino para 1
-//     microDelay(30);  // Espera por 30us
-//     gpio_set_dir(DHT11_PIN, GPIO_IN);  // DHT11 como entrada
-//     microDelay(40);
-
-//     if (!(gpio_get(DHT11_PIN))) {
-//         microDelay(80);
-//         if ((gpio_get(DHT11_PIN))) resposta = 1;
-//     }
-//     return resposta;
-// }
-
-// Função para ler os dados do DHT11
-// uint8_t DHT11_Read(void) {
-//     uint8_t byte = 0;
-//     for (uint8_t a = 0; a < 8; a++) {
-//         microDelay(40); // Atraso de 40us
-//         if (!(gpio_get(DHT11_PIN))) {
-//             byte &= ~(1 << (7 - a));
-//         } else {
-//             byte |= (1 << (7 - a));
-//         }
-//     }
-//     return byte;
-// }
 
 // Função principal
 int main() {
