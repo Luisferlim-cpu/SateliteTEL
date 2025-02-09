@@ -18,6 +18,7 @@
 #define I2C_PORT i2c1
 #define I2C_SDA 4
 #define I2C_SCL 5
+#define ACS_CORRENTE 26
 
 // Função de delay (em microsegundos)
 void microDelay(uint32_t delayUs) {
@@ -65,7 +66,10 @@ int main() {
     while (true) {
         // Leitura do MPU6050
         MPU6050_Read_Accel(I2C_PORT);
+        sleep_ms(2000); //mostra  as informacoes do acellerometro
+
         MPU6050_Read_Gyro(I2C_PORT);
+        sleep_ms(2000); //mostra  as informacoes do giroscopio
 
         // Leitura do DHT11
         if (DHT11_Start()) {
@@ -106,8 +110,9 @@ int main() {
         char altitudeStr[10];
         sprintf(altitudeStr, "%.2f m", altitude);
         LCD_print(altitudeStr, 1, 3);
+        sleep_ms(2000);
 
-        // Leitura do ADC (exemplo de medição de corrente)
+        // Leitura do ADC 
         uint16_t valorRaw = adc_read();
         float tensaoRaw = (float)valorRaw * 3.3f / (1 << 12);  // ADC de 12 bits
         float corrente = (tensaoRaw - 2.5f) / 0.1f;
@@ -152,7 +157,7 @@ void setup() {
 
     // Inicializa o ADC
     adc_init();
-    adc_gpio_init(26); // Configuração do pino de leitura analógica
+    adc_gpio_init(ACS_CORRENTE); // Configuração do pino de leitura analógica
     adc_select_input(0); // Canal 0 do ADC
     // Inicializa os e sensores
     
